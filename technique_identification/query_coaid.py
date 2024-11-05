@@ -24,7 +24,7 @@ The six psychological manipulation techniques are: "polarization", "conspiracy",
 ### Statement:
 {}
 
-Return a comma-separated list of at most two manipulation techniques in your response.
+Return a comma-separated list of the manipulation techniques used in the claim.
 
 ### Your Response: 
 """
@@ -57,7 +57,7 @@ for statement in df["title"]:
                     }
                 ],
                 temperature=0.0,
-                max_tokens=10
+                max_tokens=50
             )
             outputs_list.append(response.message.content[0].text)
             break
@@ -69,4 +69,4 @@ for statement in df["title"]:
             time.sleep(delay)
 
 df['Cohere-Command-R-Plus'] = outputs_list
-df.to_csv(f"technique_identification/coaid_evaluation.csv", index=False)
+df.to_csv(f"technique_identification/coaid_evaluation_multiple.csv", index=False)
