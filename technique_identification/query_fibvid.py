@@ -38,8 +38,9 @@ outputs_list = []
 
 import time
 import random
+import tqdm
 
-for statement in df["post_text"]:
+for statement in tqdm.tqdm(df["post_text"], total=len(df), desc="Querying Cohere"):
     formatted_prompt = prompt.format(
         statement
     )
